@@ -4,7 +4,7 @@ import 'UI/mainpage.dart';
 
 void main() {
   runApp(MaterialApp(
-    initialRoute: "getLocation",
+    initialRoute: "main",
     routes: {
       "main": (context) => MainPage(),
       "getLocation": (context) => Location(),
