@@ -1,3 +1,4 @@
+import 'package:farmcare/UI/jsonLoadingScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../data/formdata.dart';
@@ -64,6 +65,15 @@ class _MainPageState extends State<MainPage> {
     return items;
   }
 
+  navigateToNextScreen() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => JsonLoadingScreen(),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -72,15 +82,12 @@ class _MainPageState extends State<MainPage> {
         title: Text("FarmCare"),
       ),
       bottomSheet: Container(
-        margin: EdgeInsets.all(5.0),
+        margin: EdgeInsets.all(15.0),
         width: size.width,
         height: 45.0,
         child: MaterialButton(
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(10.0),
-              topRight: Radius.circular(10.0),
-            ),
+            borderRadius: BorderRadius.circular(10.0),
           ),
           color: Colors.green,
           child: Text(
@@ -98,7 +105,9 @@ class _MainPageState extends State<MainPage> {
       body: SingleChildScrollView(
         physics: BouncingScrollPhysics(),
         child: Container(
+          height: size.height - 100.0,
           padding: EdgeInsets.all(20.0),
+          margin: EdgeInsets.only(bottom: 40.0),
           child: Form(
             key: _key,
             child: Column(
@@ -254,6 +263,7 @@ class _MainPageState extends State<MainPage> {
                 Container(
                   padding: EdgeInsets.all(7.0),
                   child: TextFormField(
+                    initialValue: previousCrop,
                     decoration: InputDecoration(
                       labelText: "Previous Crop",
                       fillColor: Colors.white,
@@ -292,7 +302,7 @@ class _MainPageState extends State<MainPage> {
                     },
                     onChanged: (value) {
                       setState(() {
-                        farmSize = value;
+                        previousCrop = value;
                       });
                     },
                   ),
@@ -333,7 +343,7 @@ class _MainPageState extends State<MainPage> {
                     ),
                     onChanged: (value) {
                       setState(() {
-                        manPower = value;
+                        farmArea = value;
                       });
                     },
                   ),
@@ -391,11 +401,7 @@ class _MainPageState extends State<MainPage> {
   validator() {
     if (_key.currentState.validate()) {
       _key.currentState.save();
-      print(dropDown1.name);
-      print(dropDown2.name);
-      print(farmSize);
-      print(manPower);
-      print(machinery);
+      navigateToNextScreen();
     }
   }
 }
