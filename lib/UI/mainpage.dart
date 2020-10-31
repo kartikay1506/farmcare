@@ -84,7 +84,7 @@ class _MainPageState extends State<MainPage> {
       bottomSheet: Container(
         margin: EdgeInsets.all(15.0),
         width: size.width,
-        height: 45.0,
+        height: 55.0,
         child: MaterialButton(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.0),
@@ -105,7 +105,7 @@ class _MainPageState extends State<MainPage> {
       body: SingleChildScrollView(
         physics: BouncingScrollPhysics(),
         child: Container(
-          height: size.height - 100.0,
+          height: size.height - 190.0,
           padding: EdgeInsets.all(20.0),
           margin: EdgeInsets.only(bottom: 40.0),
           child: Form(
@@ -135,13 +135,13 @@ class _MainPageState extends State<MainPage> {
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15.0),
                         borderSide: BorderSide(
-                          color: Colors.blue,
+                          color: Colors.limeAccent[700],
                         ),
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15.0),
                         borderSide: BorderSide(
-                          color: Colors.blue,
+                          color: Colors.limeAccent[700],
                           width: 2.0,
                         ),
                       ),
@@ -155,24 +155,24 @@ class _MainPageState extends State<MainPage> {
                   child: TextFormField(
                     readOnly: true,
                     decoration: InputDecoration(
-                      labelText: "Temperature",
+                      labelText: "Temperature(Celcius)",
                       fillColor: Colors.white,
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15.0),
                         borderSide: BorderSide(
-                          color: Colors.blue,
+                          color: Colors.limeAccent[700],
                           width: 2.0,
                         ),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15.0),
                         borderSide: BorderSide(
-                          color: Colors.blue,
+                          color: Colors.limeAccent[700],
                         ),
                       ),
                     ),
                     //TODO:
-                    initialValue: "40C",
+                    initialValue: temp,
                   ),
                 ),
                 Container(
@@ -180,24 +180,24 @@ class _MainPageState extends State<MainPage> {
                   child: TextFormField(
                     readOnly: true,
                     decoration: InputDecoration(
-                      labelText: "Humidity",
+                      labelText: "Humidity(%)",
                       fillColor: Colors.white,
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15.0),
                         borderSide: BorderSide(
-                          color: Colors.blue,
+                          color: Colors.limeAccent[700],
                           width: 2.0,
                         ),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15.0),
                         borderSide: BorderSide(
-                          color: Colors.blue,
+                          color: Colors.limeAccent[700],
                         ),
                       ),
                     ),
                     //TODO:
-                    initialValue: "60%",
+                    initialValue: humidity,
                   ),
                 ),
                 Container(
@@ -210,19 +210,19 @@ class _MainPageState extends State<MainPage> {
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15.0),
                         borderSide: BorderSide(
-                          color: Colors.blue,
+                          color: Colors.limeAccent[700],
                           width: 2.0,
                         ),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15.0),
                         borderSide: BorderSide(
-                          color: Colors.blue,
+                          color: Colors.limeAccent[700],
                         ),
                       ),
                     ),
                     //TODO:
-                    initialValue: "Summer",
+                    initialValue: season,
                   ),
                 ),
                 Row(
@@ -270,13 +270,13 @@ class _MainPageState extends State<MainPage> {
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15.0),
                         borderSide: BorderSide(
-                          color: Colors.blue,
+                          color: Colors.limeAccent[700],
                         ),
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15.0),
                         borderSide: BorderSide(
-                          color: Colors.blue,
+                          color: Colors.limeAccent[700],
                           width: 2.0,
                         ),
                       ),
@@ -310,19 +310,20 @@ class _MainPageState extends State<MainPage> {
                 Container(
                   padding: EdgeInsets.all(7.0),
                   child: TextFormField(
+                    keyboardType: TextInputType.number,
                     decoration: InputDecoration(
                       labelText: "Farm Area (in Acres)",
                       fillColor: Colors.white,
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15.0),
                         borderSide: BorderSide(
-                          color: Colors.blue,
+                          color: Colors.limeAccent[700],
                         ),
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15.0),
                         borderSide: BorderSide(
-                          color: Colors.blue,
+                          color: Colors.limeAccent[700],
                           width: 2.0,
                         ),
                       ),
@@ -341,50 +342,19 @@ class _MainPageState extends State<MainPage> {
                         ),
                       ),
                     ),
+                    validator: (val) {
+                      if (val.isEmpty) {
+                        return "This field is mandatory";
+                      }
+                      try {
+                        var value = double.parse(val);
+                      } on FormatException {
+                        return "Farm Area should be a numeric value";
+                      }
+                    },
                     onChanged: (value) {
                       setState(() {
                         farmArea = value;
-                      });
-                    },
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.all(7.0),
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                      labelText: "Machinery",
-                      fillColor: Colors.white,
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(15.0),
-                        borderSide: BorderSide(
-                          color: Colors.blue,
-                        ),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(15.0),
-                        borderSide: BorderSide(
-                          color: Colors.blue,
-                          width: 2.0,
-                        ),
-                      ),
-                      errorBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(15.0),
-                        borderSide: BorderSide(
-                          color: Colors.red,
-                          width: 2.0,
-                        ),
-                      ),
-                      focusedErrorBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(15.0),
-                        borderSide: BorderSide(
-                          color: Colors.red,
-                          width: 2.0,
-                        ),
-                      ),
-                    ),
-                    onChanged: (value) {
-                      setState(() {
-                        machinery = value;
                       });
                     },
                   ),

@@ -63,6 +63,7 @@ class _OurSuggestionsScreenState extends State<OurSuggestionsScreen> {
                         );
                       },
                       child: Card(
+                        color: Color(0xFFebecf1),
                         elevation: 10.0,
                         margin: EdgeInsets.all(0.0),
                         shape: RoundedRectangleBorder(
@@ -85,7 +86,9 @@ class _OurSuggestionsScreenState extends State<OurSuggestionsScreen> {
                                       child: Text(
                                         "${result['crops']['$index'][0].toUpperCase()}${result['crops']['$index'].substring(1)}",
                                         style: GoogleFonts.dmSans(
-                                          fontSize: 30.0,
+                                          fontSize: 28.0,
+                                          color: Colors.green,
+                                          fontWeight: FontWeight.bold,
                                         ),
                                       )),
                                 ],
@@ -95,7 +98,7 @@ class _OurSuggestionsScreenState extends State<OurSuggestionsScreen> {
                               height: 200,
                               decoration: BoxDecoration(
                                 border: Border.all(
-                                  color: Colors.green,
+                                  color: Colors.limeAccent[700],
                                   width: 2.0,
                                 ),
                                 borderRadius: BorderRadius.only(

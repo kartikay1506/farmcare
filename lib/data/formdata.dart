@@ -1,6 +1,6 @@
 ListItem dropDown1;
 ListItem dropDown2;
-String previousCrop = "", farmArea, machinery;
+String previousCrop = "", farmArea;
 
 class ListItem {
   int value;
@@ -11,6 +11,7 @@ class ListItem {
 
 String longitude, latitude;
 String finaladdress;
+var temp, humidity, season;
 
 var result = {
   "crops": {"0": "wheat", "1": "millet"},
@@ -27,11 +28,7 @@ var result = {
   },
   "water_req": {"0": "450-650 mm\/day", "1": "450-650 mm\/day"},
   "time_required": {"0": "7-8 months", "1": "105-140 days"},
-  "seeds_per_hectare": {
-    "0":
-        "125 kg\/hectare normal grain 150 kg\/hectare for bold grain, Distance between rows: 18-20cm in normal condition and 5cm deep. In case of late sowing: 15-18cm and 4cm deep.",
-    "1": "8-12 kg\/hectare"
-  },
+  "seeds_per_hectare": {"0": "125 kg\/hectare", "1": "8-12 kg\/hectare"},
   "MSP": {
     "0": "Rs 1,975 per quintal",
     "1": "Rs 1,871 per quintal",
@@ -41,4 +38,22 @@ var result = {
 List<String> images = [
   "http://www.pngall.com/wp-content/uploads/2/Wheat-PNG-Image.png",
   "https://megoindia.com/wp-content/uploads/2019/07/millets-benefits-page.png"
+];
+
+var titleData = [
+  "Soil Type",
+  "Temperature Required",
+  "Water Required",
+  "Time Required",
+  "Seeds per hectare",
+  "Market Demand",
+];
+
+var indexes = [
+  "soil_type",
+  "temperature_req",
+  "water_req",
+  "time_required",
+  "seeds_per_hectare",
+  "MSP",
 ];
