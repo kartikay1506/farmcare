@@ -40,13 +40,22 @@ List<String> images = [
   "https://megoindia.com/wp-content/uploads/2019/07/millets-benefits-page.png"
 ];
 
-var titleData = [
+var titleData_en = [
   "Soil Type",
   "Temperature Required",
   "Water Required",
   "Time Required",
   "Seeds per hectare",
   "Market Demand",
+];
+
+var titleData_hi = [
+  "मिट्टी के प्रकार",
+  "आवश्यक तापमान",
+  "पानी की आवश्यकता",
+  "समय की आवश्यकता",
+  "बीज प्रति हेक्टेयर",
+  "बाजार की मांग",
 ];
 
 var indexes = [
@@ -57,3 +66,5 @@ var indexes = [
   "seeds_per_hectare",
   "MSP",
 ];
+
+bool isHindi = false;

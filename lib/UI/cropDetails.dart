@@ -123,7 +123,9 @@ class _CropDetailsState extends State<CropDetails> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                "${titleData[i]}",
+                                isHindi
+                                    ? "${titleData_hi[i]}"
+                                    : "${titleData_en[i]}",
                                 style: GoogleFonts.dmSans(
                                   fontSize: 18.0,
                                   color: Colors.green,

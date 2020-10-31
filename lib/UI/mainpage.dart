@@ -46,6 +46,7 @@ class _MainPageState extends State<MainPage> {
 
   void initState() {
     super.initState();
+    previousCrop = "";
     _dropdownMenuItems1 = buildDropDownMenuItems(_dropdownItems1);
     _selectedItem1 = _dropdownMenuItems1[0].value;
     _dropdownMenuItems2 = buildDropDownMenuItems(_dropdownItems2);
@@ -91,7 +92,7 @@ class _MainPageState extends State<MainPage> {
           ),
           color: Colors.green,
           child: Text(
-            "Submit",
+            isHindi ? "आगे जाएं" : "Submit",
             style: TextStyle(
               color: Colors.white,
               fontSize: 18.0,
@@ -105,7 +106,7 @@ class _MainPageState extends State<MainPage> {
       body: SingleChildScrollView(
         physics: BouncingScrollPhysics(),
         child: Container(
-          height: size.height - 190.0,
+          height: size.height - 150.0,
           padding: EdgeInsets.all(20.0),
           margin: EdgeInsets.only(bottom: 40.0),
           child: Form(
@@ -130,7 +131,7 @@ class _MainPageState extends State<MainPage> {
                   child: TextFormField(
                     readOnly: true,
                     decoration: InputDecoration(
-                      labelText: "Location",
+                      labelText: isHindi ? "स्थान" : "Location",
                       fillColor: Colors.white,
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15.0),
@@ -155,7 +156,9 @@ class _MainPageState extends State<MainPage> {
                   child: TextFormField(
                     readOnly: true,
                     decoration: InputDecoration(
-                      labelText: "Temperature(Celcius)",
+                      labelText: isHindi
+                          ? "तापमान(सेंटीग्रेड)"
+                          : "Temperature(Celcius)",
                       fillColor: Colors.white,
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15.0),
@@ -180,7 +183,7 @@ class _MainPageState extends State<MainPage> {
                   child: TextFormField(
                     readOnly: true,
                     decoration: InputDecoration(
-                      labelText: "Humidity(%)",
+                      labelText: isHindi ? "नमी(प्रतिशत)" : "Humidity(%)",
                       fillColor: Colors.white,
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15.0),
@@ -205,7 +208,7 @@ class _MainPageState extends State<MainPage> {
                   child: TextFormField(
                     readOnly: true,
                     decoration: InputDecoration(
-                      labelText: "Current Season",
+                      labelText: isHindi ? "मौसम" : "Current Season",
                       fillColor: Colors.white,
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15.0),
@@ -265,7 +268,7 @@ class _MainPageState extends State<MainPage> {
                   child: TextFormField(
                     initialValue: previousCrop,
                     decoration: InputDecoration(
-                      labelText: "Previous Crop",
+                      labelText: isHindi ? "पिछली फसल" : "Previous Crop",
                       fillColor: Colors.white,
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15.0),
@@ -312,7 +315,9 @@ class _MainPageState extends State<MainPage> {
                   child: TextFormField(
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
-                      labelText: "Farm Area (in Acres)",
+                      labelText: isHindi
+                          ? "कृषि क्षेत्र (एकड़ में)"
+                          : "Farm Area (in Acres)",
                       fillColor: Colors.white,
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15.0),

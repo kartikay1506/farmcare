@@ -84,7 +84,7 @@ class _LocationState extends State<Location> {
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                   child: Text(
-                    "Continue",
+                    "Continue/आगे जाएं",
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 18.0,

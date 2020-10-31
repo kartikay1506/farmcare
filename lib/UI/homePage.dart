@@ -1,5 +1,5 @@
-import 'package:farmcare/UI/mainpage.dart';
 import 'package:farmcare/UI/tempHumidLoaderScreen.dart';
+import 'package:farmcare/data/formdata.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -8,14 +8,27 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<String> options = [
+  List<String> options_en = [
     "Crop Recommendations",
     "Information Sources",
     "Good Farming Practices",
     "Agricultural Schemes",
     "Feedback",
-    "User's Guide",
+    "User Guide",
   ];
+  List<String> options_hi = [
+    "अनुशंसित फसल",
+    "सूत्रों से मिली जानकारी",
+    "अच्छी खेती के तरीके",
+    "कृषि योजनाएँ",
+    "प्रतिपुष्टि",
+    "उपयोगकर्ता गाइड",
+  ];
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -23,6 +36,26 @@ class _HomePageState extends State<HomePage> {
       resizeToAvoidBottomPadding: false,
       appBar: AppBar(
         title: Text("FarmCare"),
+        actions: [
+          GestureDetector(
+            onTap: () {
+              setState(() {
+                isHindi = !isHindi;
+              });
+            },
+            child: Center(
+              child: Container(
+                margin: EdgeInsets.all(15.0),
+                child: Text(
+                  'हिं',
+                  style: TextStyle(
+                    fontSize: 25.0,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
       body: Container(
         height: size.height,
@@ -47,7 +80,7 @@ class _HomePageState extends State<HomePage> {
                     width: size.width,
                     child: ListView.builder(
                       physics: NeverScrollableScrollPhysics(),
-                      itemCount: options.length,
+                      itemCount: options_en.length,
                       itemBuilder: (context, i) => Center(
                         child: Container(
                           height: 55.0,
@@ -59,7 +92,7 @@ class _HomePageState extends State<HomePage> {
                               borderRadius: BorderRadius.circular(10.0),
                             ),
                             child: Text(
-                              "${options[i]}",
+                              isHindi ? "${options_hi[i]}" : "${options_en[i]}",
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 18.0,
