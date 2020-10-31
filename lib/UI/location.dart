@@ -54,6 +54,11 @@ class _LocationState extends State<Location> {
             locationEnabled = true;
             _getCurrentLocation();
           });
+        } else {
+          setState(() {
+            locationEnabled = false;
+            isLoading = false;
+          });
         }
       }
     }
@@ -65,16 +70,13 @@ class _LocationState extends State<Location> {
     return SafeArea(
       child: Scaffold(
         bottomSheet: Container(
-          margin: EdgeInsets.all(5.0),
+          margin: EdgeInsets.all(15.0),
           width: size.width,
           height: 45.0,
-          child: !isLoading
+          child: !isLoading && locationEnabled
               ? MaterialButton(
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(10.0),
-                      topRight: Radius.circular(10.0),
-                    ),
+                    borderRadius: BorderRadius.circular(10.0),
                   ),
                   child: Text(
                     "Continue",
@@ -121,7 +123,7 @@ class _LocationState extends State<Location> {
                     Text(
                       'Your current location is being fetched',
                       style: TextStyle(
-                        fontSize: 16.0,
+                        fontSize: 18.0,
                       ),
                     ),
                   ],
