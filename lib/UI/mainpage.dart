@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../data/formdata.dart';
 
 class MainPage extends StatefulWidget {
@@ -26,10 +27,10 @@ class _MainPageState extends State<MainPage> {
   ];
 
   List<ListItem> _dropdownItems2 = [
-    ListItem(1, "Soil Type 1"),
-    ListItem(2, "Soil Type 2"),
-    ListItem(3, "Soil Type 3"),
-    ListItem(4, "Soil Type 4")
+    ListItem(1, "Irrigation 1"),
+    ListItem(2, "Irrigation 2"),
+    ListItem(3, "Irrigation 3"),
+    ListItem(4, "Irrigation 4")
   ];
 
   List<DropdownMenuItem<ListItem>> _dropdownMenuItems1;
@@ -60,9 +61,34 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: Text("Dropdown Button"),
+        title: Text("FarmCare"),
+      ),
+      bottomSheet: Container(
+        margin: EdgeInsets.all(5.0),
+        width: size.width,
+        height: 45.0,
+        child: MaterialButton(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(10.0),
+              topRight: Radius.circular(10.0),
+            ),
+          ),
+          color: Colors.green,
+          child: Text(
+            "Submit",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 18.0,
+            ),
+          ),
+          onPressed: () {
+            validator();
+          },
+        ),
       ),
       body: SingleChildScrollView(
         physics: BouncingScrollPhysics(),
@@ -73,40 +99,158 @@ class _MainPageState extends State<MainPage> {
             child: Column(
               children: [
                 Container(
-                  padding: EdgeInsets.all(7.0),
-                  child: DropdownButton<ListItem>(
-                    value: _selectedItem1,
-                    items: _dropdownMenuItems1,
-                    onChanged: (val) {
-                      setState(() {
-                        _selectedItem1 = val;
-                        // Saved value of first drop down in dropDown1 variable
-                        dropDown1 = val;
-                        print(dropDown1.name);
-                      });
-                    },
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.all(7.0),
-                  child: DropdownButton<ListItem>(
-                    value: _selectedItem2,
-                    items: _dropdownMenuItems2,
-                    onChanged: (val) {
-                      setState(() {
-                        _selectedItem2 = val;
-                        // Saved value of second drop down in dropDown2 variable
-                        dropDown2 = val;
-                        print(dropDown2.name);
-                      });
-                    },
+                  margin: EdgeInsets.all(10.0),
+                  width: size.width,
+                  child: Text(
+                    "My Farm",
+                    textAlign: TextAlign.left,
+                    style: GoogleFonts.dmSans(
+                      fontSize: 35.0,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.grey[600],
+                    ),
                   ),
                 ),
                 Container(
                   padding: EdgeInsets.all(7.0),
                   child: TextFormField(
+                    readOnly: true,
                     decoration: InputDecoration(
-                      labelText: "Farm Size",
+                      labelText: "Location",
+                      fillColor: Colors.white,
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15.0),
+                        borderSide: BorderSide(
+                          color: Colors.blue,
+                        ),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15.0),
+                        borderSide: BorderSide(
+                          color: Colors.blue,
+                          width: 2.0,
+                        ),
+                      ),
+                    ),
+                    initialValue: finaladdress,
+                    maxLines: 3,
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.all(7.0),
+                  child: TextFormField(
+                    readOnly: true,
+                    decoration: InputDecoration(
+                      labelText: "Temperature",
+                      fillColor: Colors.white,
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15.0),
+                        borderSide: BorderSide(
+                          color: Colors.blue,
+                          width: 2.0,
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15.0),
+                        borderSide: BorderSide(
+                          color: Colors.blue,
+                        ),
+                      ),
+                    ),
+                    //TODO:
+                    initialValue: "40C",
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.all(7.0),
+                  child: TextFormField(
+                    readOnly: true,
+                    decoration: InputDecoration(
+                      labelText: "Humidity",
+                      fillColor: Colors.white,
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15.0),
+                        borderSide: BorderSide(
+                          color: Colors.blue,
+                          width: 2.0,
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15.0),
+                        borderSide: BorderSide(
+                          color: Colors.blue,
+                        ),
+                      ),
+                    ),
+                    //TODO:
+                    initialValue: "60%",
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.all(7.0),
+                  child: TextFormField(
+                    readOnly: true,
+                    decoration: InputDecoration(
+                      labelText: "Current Season",
+                      fillColor: Colors.white,
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15.0),
+                        borderSide: BorderSide(
+                          color: Colors.blue,
+                          width: 2.0,
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15.0),
+                        borderSide: BorderSide(
+                          color: Colors.blue,
+                        ),
+                      ),
+                    ),
+                    //TODO:
+                    initialValue: "Summer",
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Container(
+                      padding: EdgeInsets.all(7.0),
+                      child: DropdownButton<ListItem>(
+                        value: _selectedItem1,
+                        items: _dropdownMenuItems1,
+                        onChanged: (val) {
+                          setState(() {
+                            _selectedItem1 = val;
+                            // Saved value of first drop down in dropDown1 variable
+                            dropDown1 = val;
+                            print(dropDown1.name);
+                          });
+                        },
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.all(7.0),
+                      child: DropdownButton<ListItem>(
+                        value: _selectedItem2,
+                        items: _dropdownMenuItems2,
+                        onChanged: (val) {
+                          setState(() {
+                            _selectedItem2 = val;
+                            // Saved value of second drop down in dropDown2 variable
+                            dropDown2 = val;
+                            print(dropDown2.name);
+                          });
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+                Container(
+                  padding: EdgeInsets.all(7.0),
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      labelText: "Previous Crop",
                       fillColor: Colors.white,
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15.0),
@@ -152,7 +296,7 @@ class _MainPageState extends State<MainPage> {
                   padding: EdgeInsets.all(7.0),
                   child: TextFormField(
                     decoration: InputDecoration(
-                      labelText: "Man Power",
+                      labelText: "Farm Area (in Acres)",
                       fillColor: Colors.white,
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15.0),
@@ -231,18 +375,6 @@ class _MainPageState extends State<MainPage> {
                   ),
                 ),
                 Padding(padding: EdgeInsets.only(top: 20.0)),
-                MaterialButton(
-                  color: Colors.blue,
-                  child: Text(
-                    "Submit",
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                  ),
-                  onPressed: () {
-                    validator();
-                  },
-                ),
               ],
             ),
           ),

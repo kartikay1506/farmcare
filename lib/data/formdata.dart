@@ -8,3 +8,6 @@ class ListItem {
 
   ListItem(this.value, this.name);
 }
+
+String longitude, latitude;
+String finaladdress;

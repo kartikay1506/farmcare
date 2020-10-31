@@ -4,11 +4,14 @@ import 'UI/mainpage.dart';
 
 void main() {
   runApp(MaterialApp(
-    initialRoute: "main",
+    initialRoute: "getLocation",
     routes: {
       "main": (context) => MainPage(),
       "getLocation": (context) => Location(),
     },
     debugShowCheckedModeBanner: false,
+    theme: ThemeData(
+      primaryColor: Colors.green,
+    ),
   ));
 }
