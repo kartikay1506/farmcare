@@ -1,3 +1,5 @@
+import 'package:farmcare/UI/goodFarmingPractices.dart';
+import 'package:farmcare/UI/informationSources.dart';
 import 'package:farmcare/UI/tempHumidLoaderScreen.dart';
 import 'package:farmcare/data/formdata.dart';
 import 'package:flutter/material.dart';
@@ -119,6 +121,14 @@ class _HomePageState extends State<HomePage> {
       case 0:
         Navigator.push(context,
             MaterialPageRoute(builder: (context) => TempHumidLoaderScreen()));
+        break;
+      case 1:
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => InformationSources()));
+        break;
+      case 2:
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => GoodFarmingPractices()));
         break;
       default:
     }
