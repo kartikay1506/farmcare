@@ -11,6 +11,7 @@ class _HomePageState extends State<HomePage> {
     "My Farm",
     "KVP",
     "Good Farming Practices",
+    "Agriculture Schemes",
     "Feedback",
   ];
   @override
@@ -40,7 +41,7 @@ class _HomePageState extends State<HomePage> {
                 width: size.width,
                 child: ListView.builder(
                   physics: BouncingScrollPhysics(),
-                  itemCount: 4,
+                  itemCount: 5,
                   itemBuilder: (context, i) => Center(
                     child: Container(
                       height: 50.0,
