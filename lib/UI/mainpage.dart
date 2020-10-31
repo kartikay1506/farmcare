@@ -20,17 +20,22 @@ class _MainPageState extends State<MainPage> {
   // ListItem dropDown2;
   // String farmSize, manPower, machinery;
   List<ListItem> _dropdownItems1 = [
-    ListItem(1, "Soil Type 1"),
-    ListItem(2, "Soil Type 2"),
-    ListItem(3, "Soil Type 3"),
-    ListItem(4, "Soil Type 4")
+    ListItem(1, "Sandy Soil"),
+    ListItem(2, "Clay Soil"),
+    ListItem(3, "Peat Soil"),
+    ListItem(4, "Chalk soil"),
+    ListItem(4, "Loam soil")
   ];
 
   List<ListItem> _dropdownItems2 = [
-    ListItem(1, "Irrigation 1"),
-    ListItem(2, "Irrigation 2"),
-    ListItem(3, "Irrigation 3"),
-    ListItem(4, "Irrigation 4")
+    ListItem(1, "Surface irrigation"),
+    ListItem(2, "Localized irrigation"),
+    ListItem(3, "Drip irrigation"),
+    ListItem(4, "Sprinkler irrigation"),
+    ListItem(4, "Center pivot irrigation"),
+    ListItem(4, "Lateral move irrigation"),
+    ListItem(4, "Sub-irrigation"),
+    ListItem(4, "Manual irrigation"),
   ];
 
   List<DropdownMenuItem<ListItem>> _dropdownMenuItems1;
