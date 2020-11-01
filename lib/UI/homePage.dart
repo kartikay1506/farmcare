@@ -1,3 +1,5 @@
+import 'package:farmcare/UI/agriculturalScemes.dart';
+import 'package:farmcare/UI/feedback.dart';
 import 'package:farmcare/UI/goodFarmingPractices.dart';
 import 'package:farmcare/UI/informationSources.dart';
 import 'package:farmcare/UI/tempHumidLoaderScreen.dart';
@@ -16,6 +18,7 @@ class _HomePageState extends State<HomePage> {
     "Good Farming Practices",
     "Agricultural Schemes",
     "Feedback",
+    "Sell Crops",
     "User Guide",
   ];
   List<String> options_hi = [
@@ -24,6 +27,7 @@ class _HomePageState extends State<HomePage> {
     "अच्छी खेती के तरीके",
     "कृषि योजनाएँ",
     "प्रतिपुष्टि",
+    "फसल बेचो",
     "उपयोगकर्ता गाइड",
   ];
   @override
@@ -64,6 +68,7 @@ class _HomePageState extends State<HomePage> {
         width: size.width,
         child: Center(
           child: SingleChildScrollView(
+            physics: BouncingScrollPhysics(),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -78,7 +83,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 Container(
                     padding: EdgeInsets.all(7.0),
-                    height: 480.0,
+                    height: 550.0,
                     width: size.width,
                     child: ListView.builder(
                       physics: NeverScrollableScrollPhysics(),
@@ -129,6 +134,14 @@ class _HomePageState extends State<HomePage> {
       case 2:
         Navigator.push(context,
             MaterialPageRoute(builder: (context) => GoodFarmingPractices()));
+        break;
+      case 3:
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => AgriculturalScemes()));
+        break;
+      case 4:
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => FeedBack()));
         break;
       default:
     }

@@ -20,7 +20,7 @@ class _WebViewPageState extends State<WebViewPage> {
       ),
       body: WebView(
         initialUrl: widget.url,
-        javascriptMode: JavascriptMode.disabled,
+        javascriptMode: JavascriptMode.unrestricted,
         onWebViewCreated: (controller) {
           _controller.complete(controller);
         },

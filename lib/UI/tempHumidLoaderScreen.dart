@@ -41,7 +41,7 @@ class _TempHumidLoaderScreenState extends State<TempHumidLoaderScreen> {
     var response = await http.get(url);
     var tempHumidData = json.decode(response.body);
     temp = tempHumidData["main"]["temp"];
-    temp = ((temp - 273) * (9 / 5) + 32).toString();
+    temp = (temp - 273.15).toString();
     humidity = tempHumidData["main"]["humidity"].toString();
     formating();
     navigateToNextScreen();

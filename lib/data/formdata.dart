@@ -37,7 +37,7 @@ var result = {
 
 List<String> images = [
   "http://www.pngall.com/wp-content/uploads/2/Wheat-PNG-Image.png",
-  "https://megoindia.com/wp-content/uploads/2019/07/millets-benefits-page.png"
+  "https://thumbnail.imgbin.com/25/14/4/imgbin-grain-millet-grain-p90ZitvYK4F1ekwxDWv3TUUDC_t.jpg"
 ];
 
 var titleData_en = [
@@ -68,3 +68,33 @@ var indexes = [
 ];
 
 bool isHindi = false;
+
+var agriculturalScemesURL = [
+  "https://pmfby.gov.in/",
+  "https://krishijagran.com/animal-husbandry/dairy-entrepreneurship-development-scheme-how-farmers-can-get-loans-up-to-rs-20-lakh-under-this-scheme/",
+  "https://krishijagran.com/agriculture-world/164-crore-farmers-registered-on-e-nam-heres-the-process-of-selling-agricultural-produce-online-in-585-mandis/",
+  "https://krishijagran.com/agriculture-world/how-farmers-can-get-rs-50000-per-hectare-for-organic-farming-under-paramparagat-krishi-vikas-yojana/",
+  "https://krishijagran.com/agriculture-world/pashu-kisan-credit-card-yojana-eligibility-benefits-loan-amount-necessary-documents-methods-to-apply/",
+  "https://krishijagran.com/news/how-to-apply-for-kisan-credit-card-online-check-step-by-step-process/",
+  "https://soilhealth.dac.gov.in/",
+];
+
+var agriculturalScemes_en = [
+  "Pradhan Mantri Fasal Bima Yojana",
+  "Dairy Entrepreneurship Development Scheme",
+  "National Agricultural Market Scheme",
+  "Paramparagat Krishi Vikas Yojana",
+  "Pashu kisan Credit Card Yojana",
+  "Kisan credit card",
+  "Soil Health Card",
+];
+
+var agriculturalScemes_hi = [
+  "प्रधानमंत्री आवास बीमा योजना",
+  "डेयरी उद्यमिता विकास योजना",
+  "राष्ट्रीय कृषि बाजार योजना",
+  "परम्परागत कृषि विकास योजना",
+  "पशू किसान क्रेडिट कार्ड योजना",
+  "किसान क्रेडिट कार्ड",
+  "मृदा स्वास्थ्य कार्ड",
+];
