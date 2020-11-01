@@ -37,7 +37,7 @@ var result = {
 
 List<String> images = [
   "http://www.pngall.com/wp-content/uploads/2/Wheat-PNG-Image.png",
-  "https://thumbnail.imgbin.com/25/14/4/imgbin-grain-millet-grain-p90ZitvYK4F1ekwxDWv3TUUDC_t.jpg"
+  "https://www.8milletwalkathon.com/wp-content/uploads/2018/10/wheat-vector-png-300x300.png"
 ];
 
 var titleData_en = [
