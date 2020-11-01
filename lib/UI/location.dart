@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:geocoder/geocoder.dart';
@@ -23,11 +22,17 @@ class _LocationState extends State<Location> {
   @override
   void initState() {
     super.initState();
+    longitude = "";
+    latitude = "";
+    finaladdress = "";
     isLoading = true;
     checkAllowLocation();
   }
 
   checkAllowLocation() async {
+    longitude = "";
+    latitude = "";
+    finaladdress = "";
     LocationPermission checkpermission = await Geolocator.checkPermission();
     String val = checkpermission.toString();
     print(checkpermission.toString());
@@ -72,14 +77,14 @@ class _LocationState extends State<Location> {
         bottomSheet: Container(
           margin: EdgeInsets.all(15.0),
           width: size.width,
-          height: 45.0,
+          height: 55.0,
           child: !isLoading && locationEnabled
               ? MaterialButton(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                   child: Text(
-                    "Continue",
+                    "Continue/आगे जाएं",
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 18.0,
@@ -198,9 +203,13 @@ class _LocationState extends State<Location> {
     var coordinates =
         new Coordinates(_currentLocation.latitude, _currentLocation.longitude);
 
-    List<Address> address =
-        await Geocoder.local.findAddressesFromCoordinates(coordinates);
-    first = address.first;
+    try {
+      List<Address> address =
+          await Geocoder.local.findAddressesFromCoordinates(coordinates);
+      first = address.first;
+    } catch (e) {
+      errorNotification(e);
+    }
     setState(() {
       longitude = _currentLocation.longitude.toString();
       latitude = _currentLocation.latitude.toString();
@@ -210,23 +219,21 @@ class _LocationState extends State<Location> {
   }
 
   _getCurrentLocation() {
-    Timer(Duration(seconds: 4), () {
-      try {
-        Geolocator.getCurrentPosition(
-          desiredAccuracy: LocationAccuracy.best,
-          forceAndroidLocationManager: true,
-        ).then((Position position) {
-          setState(() {
-            _currentLocation = position;
-            _getAddressFromLatLng();
-          });
-        }).catchError((e) {
-          errorNotification('Oops! An error occured');
+    try {
+      Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.best,
+        forceAndroidLocationManager: true,
+      ).then((Position position) {
+        setState(() {
+          _currentLocation = position;
+          _getAddressFromLatLng();
         });
-      } catch (e) {
-        errorNotification(e);
-      }
-    });
+      }).catchError((e) {
+        errorNotification('Oops! An error occured');
+      });
+    } catch (e) {
+      errorNotification(e);
+    }
   }
 
   errorNotification(String message) {
@@ -259,8 +266,8 @@ class _LocationState extends State<Location> {
                   ),
                 ),
                 onPressed: () {
-                  checkAllowLocation();
                   Navigator.of(context).pop();
+                  checkAllowLocation();
                 },
               ),
             )
